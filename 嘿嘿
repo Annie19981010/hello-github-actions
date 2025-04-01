@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GRAND LINKAGE 髮質護理推薦</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
+        .question, .result { display: none; margin-top: 20px; }
+        .active { display: block; }
+        button { margin: 10px; padding: 10px; font-size: 16px; }
+    </style>
+</head>
+<body>
+    <h1>找出你的理想質感護髮MENU</h1>
+    
+    <div id="q1" class="question active">
+        <p>是否常燙染？(3次以上/年)</p>
+        <button onclick="nextQuestion('q2a')">YES</button>
+        <button onclick="nextQuestion('q2b')">NO</button>
+    </div>
+    
+    <div id="q2a" class="question">
+        <p>有重複燙髮或造型夾嗎？</p>
+        <button onclick="showResult('新・柔漾X號')">YES</button>
+        <button onclick="nextQuestion('q3a')">NO</button>
+    </div>
+    
+    <div id="q3a" class="question">
+        <p>在意頭髮毛躁位置？</p>
+        <button onclick="showResult('新・柔漾+號')">髮尾</button>
+        <button onclick="showResult('恆羽+號')">表面</button>
+    </div>
+    
+    <div id="q2b" class="question">
+        <p>頭髮長度有過肩嗎？</p>
+        <button onclick="nextQuestion('q3b')">YES</button>
+        <button onclick="nextQuestion('q4')">NO</button>
+    </div>
+    
+    <div id="q3b" class="question">
+        <p>在意的手觸感是？</p>
+        <button onclick="showResult('新・柔漾一般')">髮尾柔軟</button>
+        <button onclick="showResult('恆羽一般')">髮根蓬鬆</button>
+    </div>
+    
+    <div id="q4" class="question">
+        <p>使否有整理髮流困擾？</p>
+        <button onclick="showResult('恆羽+號')">不易整理</button>
+        <button onclick="showResult('新・柔漾+號')">容易整理</button>
+    </div>
+    
+    <div id="result" class="result">
+        <h2>推薦產品：<span id="recommendation"></span></h2>
+        <p><a href="#">查看產品詳情</a></p>
+    </div>
+
+    <script>
+        function nextQuestion(nextId) {
+            document.querySelectorAll('.question').forEach(q => q.classList.remove('active'));
+            document.getElementById(nextId).classList.add('active');
+        }
+        
+        function showResult(product) {
+            document.querySelectorAll('.question').forEach(q => q.classList.remove('active'));
+            document.getElementById('result').classList.add('active');
+            document.getElementById('recommendation').innerText = product;
+        }
+    </script>
+</body>
+</html>
